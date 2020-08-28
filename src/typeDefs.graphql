@@ -1,3 +1,15 @@
+"""
+ Describes a Song
+"""
+type Song {
+  title: String
+  artist: String
+}
+
+"""
+ The primary Queries
+"""
 type Query {
   ping: String!
+  songs: [Song!]!
 }
