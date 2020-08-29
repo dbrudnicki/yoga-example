@@ -1,6 +1,6 @@
 # yoga-example
 
-A simple GraphQL Yoga server example
+A simple GraphQL server using Apollo
 
 ## Getting Started
 
