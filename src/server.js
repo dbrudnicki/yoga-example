@@ -1,8 +1,6 @@
-const { GraphQLServer } = require("graphql-yoga");
+const { ApolloServer } = require("apollo-server");
 const { readFileSync } = require("fs");
-
-// Load the resolvers
-const resolvers = require("./resolvers");
+const resolvers = require("./resolvers.js");
 
 // Load the GraphQL definitions
 const typeDefs = readFileSync(`${__dirname}/typeDefs.graphql`, "utf8");
@@ -11,12 +9,12 @@ const typeDefs = readFileSync(`${__dirname}/typeDefs.graphql`, "utf8");
 const PORT = process.env.PORT || 8000;
 
 // Create a server instance
-const server = new GraphQLServer({
+const server = new ApolloServer({
   resolvers,
   typeDefs,
 });
 
 // Start the server on the specified port
-server.start({ port: PORT }, () =>
-  console.log(`Server started and listening on port: ${PORT}`)
-);
+server.listen({ port: PORT }).then(({ url }) => {
+  console.log(`Server is ready at ${url}`);
+});

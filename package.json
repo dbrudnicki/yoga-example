@@ -11,7 +11,8 @@
     "start": "nodemon ."
   },
   "dependencies": {
-    "graphql-yoga": "^1.18.3"
+    "apollo-server": "^2.17.0",
+    "graphql": "^15.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
