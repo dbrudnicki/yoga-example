@@ -1,6 +1,7 @@
 const { ApolloServer } = require("apollo-server");
 const { readFileSync } = require("fs");
 const resolvers = require("./resolvers.js");
+const { start } = require("repl");
 
 // Load the GraphQL definitions
 const typeDefs = readFileSync(`${__dirname}/typeDefs.graphql`, "utf8");
@@ -15,6 +16,9 @@ const server = new ApolloServer({
 });
 
 // Start the server on the specified port
-server.listen({ port: PORT }).then(({ url }) => {
+async function startServer() {
+  const { url } = await server.listen({ port: PORT });
   console.log(`Server is ready at ${url}`);
-});
+}
+
+startServer();
