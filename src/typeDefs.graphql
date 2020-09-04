@@ -1,15 +1,34 @@
+enum EVEN_ODD {
+  EVEN
+  ODD
+}
+
 """
- Describes a Song
+Describes a Song
 """
 type Song {
+  id: ID
   title: String
   artist: String
 }
 
+input SongInput {
+  title: String!
+  artist: String!
+}
+
 """
- The primary Queries
+The primary Queries
 """
 type Query {
   ping: String!
-  songs: [Song!]!
+  songs(xyz: EVEN_ODD): [Song!]!
+}
+
+"""
+The primary Mutations
+"""
+type Mutation {
+  addSong1(title: String!, artist: String!): Song!
+  addSong2(args: SongInput!): Song!
 }
